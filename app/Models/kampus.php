@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class kampus extends Model
-{
-    use HasFactory;
+class Kampus extends Model
+{ protected $fillable = ['nama', 'alamat', 'latitude', 'longitude'];
 
-    protected $fillable = ['id', 'nama', 'alamat'];
-
-    public function areaParkirs()
+    public function areaParkir()
     {
         return $this->hasMany(AreaParkir::class);
     }

@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jenis extends Model
 {
-    use HasFactory;
+    protected $fillable = ['nama'];
 
-    protected $fillable = ['id', 'nama'];
-
-    public function kendaraans()
+    public function kendaraan()
     {
         return $this->hasMany(Kendaraan::class, 'jenis_kendaraan_id');
     }

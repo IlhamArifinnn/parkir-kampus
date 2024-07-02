@@ -7,17 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
-    use HasFactory;
-
-    protected $fillable = ['id', 'tanggal', 'mulai', 'akhir', 'keterangan', 'biaya', 'kendaraan_id', 'area_parkir'];
+    protected $fillable = ['tanggal', 'mulai', 'akhir', 'keterangan', 'biaya', 'kendaraan_id', 'area_parkir_id'];
 
     public function kendaraan()
     {
-        return $this->belongsTo(Kendaraan::class, 'kendaraan_id');
+        return $this->belongsTo(Kendaraan::class);
     }
 
     public function areaParkir()
     {
-        return $this->belongsTo(AreaParkir::class, 'area_parkir_id');
+        return $this->belongsTo(AreaParkir::class);
     }
 }

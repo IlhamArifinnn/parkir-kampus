@@ -6,28 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('area_parkirs', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama', 30);
             $table->integer('kapasitas');
-            $table->string('keterangan');
-            $table->unsignedBigInteger('kampus_id');
+            $table->string('keterangan', 45);
+            $table->foreignId('kampus')->constrained('kampus');
             $table->timestamps();
-
-            $table->foreign('kampus_id')->references('id')->on('kampus')->onDelete('cascade');
-
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('area_parkirs');
     }

@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class AreaParkir extends Model
-{
-    use HasFactory;
-
-    protected $fillable = ['id', 'nama', 'kapasitas', 'keterangan', 'kampus_id'];
+{ protected $fillable = ['nama', 'kapasitas', 'keterangan', 'kampus_id'];
 
     public function kampus()
     {
         return $this->belongsTo(Kampus::class);
+    }
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
     }
 }
