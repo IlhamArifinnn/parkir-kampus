@@ -6,14 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Kendaraan extends Model
-{
-    use HasFactory;
+{ protected $fillable = ['merk', 'pemilik', 'nopol', 'thn_beli', 'deskripsi', 'jenis_kendaraan_id', 'kapasitas_kursi', 'rating'];
 
-    protected $fillable = ['id', 'merk', 'pemilik', 'nopol', 'thn_beli', 'deskripsi', 'jenis_kendaraan', 'kapasitas_kursi', 'rating'];
-
-    public function jenisKendaraan()
+    public function jenis()
     {
-        return $this->belongsTo(Kendaraan::class, 'jenis_kendaraan_id');
+        return $this->belongsTo(Jenis::class, 'jenis_kendaraan_id');
+    }
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
     }
 }
-

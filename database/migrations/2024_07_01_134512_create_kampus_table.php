@@ -9,21 +9,25 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('kampuses', function (Blueprint $table) {
+        Schema::create('kampus', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('alamat');
+            $table->string('nama', 20);
+            $table->string('alamat', 45);
+            $table->double('latitude');
+            $table->double('longitude');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('kampuses');
+        Schema::dropIfExists('kampus');
     }
 };
