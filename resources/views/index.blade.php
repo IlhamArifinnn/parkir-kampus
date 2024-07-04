@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Parkir Kampus STT Nurul Fikri</title>
+    <title>Parkir Kampus STT Nurul FIkri</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -33,9 +33,7 @@
 
 <body class="index-page">
 
-    <?php
-    @include 'landing-page.layout.header';
-    ?>
+    @include('landing-page.header')
 
     <main class="main">
         <!-- Hero Section -->
@@ -94,7 +92,8 @@
                     </div>
 
                     <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-                        <img src="assets/img/hero-img.svg" class="img-fluid mb-3 mb-lg-0" alt="Campus Parking" />
+                        <img src="{{ asset('assets/landing-page/img/hero-img.svg') }}" class="img-fluid mb-3 mb-lg-0"
+                            alt="Campus Parking" />
                     </div>
                 </div>
             </div>
@@ -163,7 +162,8 @@
                 <div class="row gy-3">
                     <div class="col-lg-6 mt-4 position-relative align-self-start order-lg-last order-first"
                         data-aos="fade-up" data-aos-delay="200">
-                        <img src="assets/img/about.webp" class="img-fluid rounded" alt="About Campus" />
+                        <img src="{{ asset('assets/landing-page/img/about.webp') }}" class="img-fluid rounded"
+                            alt="About Campus" />
 
                     </div>
 
@@ -231,7 +231,8 @@
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="card">
                             <div class="card-img">
-                                <img src="assets/img/service-1.jpg" alt="Parkir Utama" class="img-fluid" />
+                                <img src="{{ asset('assets/landing-page/img/service-1.jpg') }}" alt="Parkir Utama"
+                                    class="img-fluid" />
                             </div>
                             <h3>Parkir B1:101-103</h3>
                             <p>
@@ -243,7 +244,8 @@
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="card">
                             <div class="card-img">
-                                <img src="assets/img/service-2.jpg" alt="Parkir Timur" class="img-fluid" />
+                                <img src="{{ asset('assets/landing-page/img/service-2.jpg') }}" alt="Parkir Timur"
+                                    class="img-fluid" />
                             </div>
                             <h3><a href="#" class="stretched-link">Parkir B1:104-106</a></h3>
                             <p>
@@ -255,7 +257,8 @@
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="card">
                             <div class="card-img">
-                                <img src="assets/img/service-3.jpg" alt="Parkir Barat" class="img-fluid" />
+                                <img src="{{ asset('assets/landing-page/img/service-3.jpg') }}" alt="Parkir Barat"
+                                    class="img-fluid" />
                             </div>
                             <h3><a href="#" class="stretched-link">Parkir B2</a></h3>
                             <p>
@@ -267,7 +270,8 @@
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                         <div class="card">
                             <div class="card-img">
-                                <img src="assets/img/service-4.jpg" alt="Parkir Selatan" class="img-fluid" />
+                                <img src="{{ asset('assets/landing-page/img/service-4.jpg') }}" alt="Parkir Selatan"
+                                    class="img-fluid" />
                             </div>
                             <h3><a href="#" class="stretched-link">Parkir B3</a></h3>
                             <p>
@@ -279,7 +283,8 @@
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                         <div class="card">
                             <div class="card-img">
-                                <img src="assets/img/service-5.jpg" alt="Parkir Fakultas" class="img-fluid" />
+                                <img src="{{ asset('assets/landing-page/img/service-5.jpg') }}" alt="Parkir Fakultas"
+                                    class="img-fluid" />
                             </div>
                             <h3>Parkir A-1</h3>
                             <p>
@@ -291,7 +296,8 @@
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
                         <div class="card">
                             <div class="card-img">
-                                <img src="assets/img/service-6.jpg" alt="Parkir Perpustakaan" class="img-fluid" />
+                                <img src="{{ asset('assets/landing-page/img/service-6.jpg') }}"
+                                    alt="Parkir Perpustakaan" class="img-fluid" />
                             </div>
                             <h3><a href="#" class="stretched-link">Parkir A-2</a></h3>
                             <p>
@@ -306,7 +312,7 @@
 
         <!-- Call To Action Section -->
         <section id="call-to-action" class="call-to-action section dark-background">
-            <img src="assets/img/gedung-a1.png" alt="Background Image" />
+            <img src="{{ asset('assets/landing-page/img/gedung-a1.png') }}" alt="Background Image" />
 
             <div class="container">
                 <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
@@ -341,7 +347,8 @@
             <div class="container">
                 <div class="row gy-4 align-items-center services-item">
                     <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
-                        <img src="assets/img/service-1.jpg" class="img-fluid" alt="Sistem Parkir Terintegrasi" />
+                        <img src="{{ asset('assets/landing-page/img/service-1.jpg') }}" class="img-fluid"
+                            alt="Sistem Parkir Terintegrasi" />
                     </div>
                     <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
                         <h3>Sistem Parkir Terintegrasi</h3>
@@ -363,7 +370,8 @@
                 <div class="row gy-4 align-items-center services-item">
                     <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out"
                         data-aos-delay="200">
-                        <img src="assets/img/service-2.jpg" class="img-fluid" alt="Reservasi Parkir Online" />
+                        <img src="{{ asset('assets/landing-page/img/service-2.jpg') }}" class="img-fluid"
+                            alt="Reservasi Parkir Online" />
                     </div>
                     <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
                         <h3>Reservasi Parkir Online</h3>
@@ -379,7 +387,8 @@
 
                 <div class="row gy-4 align-items-center services-item">
                     <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="300">
-                        <img src="assets/img/service-3.jpg" class="img-fluid" alt="Keamanan yang Terjamin" />
+                        <img src="{{ asset('assets/landing-page/img/service-3.jpg') }}" class="img-fluid"
+                            alt="Keamanan yang Terjamin" />
                     </div>
                     <div class="col-md-7" data-aos="fade-up" data-aos-delay="300">
                         <h3>Keamanan yang Terjamin</h3>
@@ -399,7 +408,8 @@
                 <div class="row gy-4 align-items-center services-item">
                     <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out"
                         data-aos-delay="400">
-                        <img src="assets/img/service-4.jpg" class="img-fluid" alt="Layanan Pelanggan Prima" />
+                        <img src="{{ asset('assets/landing-page/img/service-4.jpg') }}" class="img-fluid"
+                            alt="Layanan Pelanggan Prima" />
                     </div>
                     <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="400">
                         <h3>Layanan Pelanggan Prima</h3>
@@ -419,7 +429,8 @@
 
         <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials section dark-background">
-            <img src="assets/img/gedung-b.png" class="testimonials-bg " alt="" />
+            <img src="{{ asset('assets/landing-page/img/gedung-b.png') }}" class="testimonials-bg "
+                alt="" />
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper init-swiper">
@@ -441,8 +452,8 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img"
-                                    alt="" />
+                                <img src="{{ asset('assets/landing-page/img/testimonials/testimonials-1.jpg') }}"
+                                    class="testimonial-img" alt="" />
                                 <h3>Ahmad Fauzi</h3>
                                 <h4>Mahasiswa</h4>
                                 <div class="stars">
@@ -463,8 +474,8 @@
 
                         <div class="swiper-slide">
                             <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img"
-                                    alt="" />
+                                <img src="{{ asset('assets/landing-page/img/testimonials/testimonials-2.jpg') }}"
+                                    class="testimonial-img" alt="" />
                                 <h3>Siti Rahmawati</h3>
                                 <h4>Dosen</h4>
                                 <div class="stars">
@@ -485,8 +496,8 @@
 
                         <div class="swiper-slide">
                             <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img"
-                                    alt="" />
+                                <img src="{{ asset('assets/landing-page/img/testimonials/testimonials-5.jpg') }}"
+                                    class="testimonial-img" alt="" />
                                 <h3>Budi Santoso</h3>
                                 <h4>Staff</h4>
                                 <div class="stars">
@@ -507,8 +518,8 @@
 
                         <div class="swiper-slide">
                             <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img"
-                                    alt="" />
+                                <img src="{{ asset('assets/landing-page/img/testimonials/testimonials-4.jpg') }}"
+                                    class="testimonial-img" alt="" />
                                 <h3>Andi Susanto</h3>
                                 <h4>Pengunjung</h4>
                                 <div class="stars">
@@ -529,8 +540,8 @@
 
                         <div class="swiper-slide">
                             <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img"
-                                    alt="" />
+                                <img src="{{ asset('assets/landing-page/img/testimonials/testimonials-3.jpg') }}"
+                                    class="testimonial-img" alt="" />
                                 <h3>Maya Puspitasari</h3>
                                 <h4>Alumni</h4>
                                 <div class="stars">
@@ -646,15 +657,14 @@
         <!-- /Faq Section -->
     </main>
 
-    @include('layout.footer')
-
+    @include('landing-page.footer')
 
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
     <!-- Preloader -->
-    {{-- <div id="preloader"></div> --}}
+    <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('assets/landing-page/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

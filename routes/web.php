@@ -10,8 +10,12 @@ use App\Http\Controllers\TransaksiController;
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-// Route::get('/', [LandingPageController::class, 'index'])->name('landingPage');
+Route::get('/', [LandingPageController::class, 'index'])->name('index');
+Route::get('/about', [LandingPageController::class, 'about'])->name('about');
+Route::get('/contact', [LandingPageController::class, 'contact'])->name('contact');
+Route::get('/parkir-locations', [LandingPageController::class, 'parkir_locations'])->name('parkir-locations');
+Route::get('/parkir-services', [LandingPageController::class, 'parkir_services'])->name('parkir-services');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
 
 
 
