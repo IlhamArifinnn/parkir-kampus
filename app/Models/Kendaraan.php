@@ -6,7 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Kendaraan extends Model
-{ protected $fillable = ['merk', 'pemilik', 'nopol', 'thn_beli', 'deskripsi', 'jenis_kendaraan_id', 'kapasitas_kursi', 'rating'];
+{
+    protected $fillable = [
+        'merk',
+        'pemilik',
+        'nopol',
+        'thn_beli',
+        'deskripsi',
+        'jenis_kendaraan_id',
+        'kapasitas_kursi',
+        'rating'
+    ];
 
     public function jenis()
     {

@@ -11,7 +11,7 @@
                     @if (isset($jenis))
                         @method('PUT')
                     @endif
-                    <div class="form-group">
+                    <div class="form-group mb-2">
                         <label for="nama">Nama</label>
                         <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama"
                             name="nama" value="{{ old('nama', isset($jenis) ? $jenis->nama : '') }}" required>
@@ -19,8 +19,8 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="{{ route('jenis.index') }}" class="btn btn-secondary">Back</a>
+                    <button type="submit" class="btn btn-primary ">Submit</button>
+                    <a href="{{ route('jenis.index') }}" class="btn btn-secondary ">Back</a>
                 </form>
             </div>
         </div>

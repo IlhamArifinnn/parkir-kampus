@@ -5,11 +5,14 @@ use App\Http\Controllers\JenisController;
 use App\Http\Controllers\KampusController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\AreaParkirController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\TransaksiController;
 
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/', [LandingPageController::class, 'index'])->name('landingPage');
+
 
 
 Route::get('/jenis', [JenisController::class, 'index'])->name('jenis.index');
