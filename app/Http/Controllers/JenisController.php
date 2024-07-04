@@ -12,73 +12,51 @@ class JenisController extends Controller
      */
     public function index()
     {
-        $jenisList = Jenis::latest()->get();
-
-        // Render view with jenis list
-        return view('jenis.index', compact('jenisList'));
+        $jenis = Jenis::all();
+        return view('jenis.index', compact('jenis'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('jenis.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nama' => 'required|string|max:255',
+        $request->validate([
+            'nama' => 'required|max:20|unique:jenis,nama',
         ]);
 
-        Jenis::create($validatedData);
+        Jenis::create($request->all());
 
-        return redirect()->route('jenis.index')->with('success', 'Jenis created successfully.');
+        return redirect()->route('jenis.index')->with('success', 'Jenis kendaraan berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Jenis $jenis)
+    public function show(Jenis $jeni)
     {
-        return view('jenis.show', compact('jenis'));
+        return view('jenis.show', compact('jeni'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Jenis $jenis)
+    public function edit(Jenis $jeni)
     {
-        return view('jenis.edit', compact('jenis'));
+        return view('jenis.edit', compact('jeni'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Jenis $jenis)
+    public function update(Request $request, Jenis $jeni)
     {
-        $validatedData = $request->validate([
-            'nama' => 'sometimes|required|string|max:255',
+        $request->validate([
+            'nama' => 'required|max:20|unique:jenis,nama,' . $jeni->id,
         ]);
 
-        $jenis->update($validatedData);
+        $jeni->update($request->all());
 
-        return redirect()->route('jenis.index')->with('success', 'Jenis updated successfully.');
-
+        return redirect()->route('jenis.index')->with('success', 'Jenis kendaraan berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Jenis $jenis)
+    public function destroy(Jenis $jeni)
     {
-        $jenis->delete();
+        $jeni->delete();
 
-        return redirect()->route('jenis.index')->with('success', 'Jenis deleted successfully.');
-
+        return redirect()->route('jenis.index')->with('success', 'Jenis kendaraan berhasil dihapus.');
     }
 }

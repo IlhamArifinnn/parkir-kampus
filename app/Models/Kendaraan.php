@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kendaraan extends Model
 {
+    use HasFactory;
+    protected $table = 'kendaraans';
+
     protected $fillable = [
         'merk',
         'pemilik',
@@ -18,11 +21,11 @@ class Kendaraan extends Model
         'rating'
     ];
 
-    public function jenis()
+    public function jenisKendaraan()
     {
         return $this->belongsTo(Jenis::class, 'jenis_kendaraan_id');
     }
-
+    
     public function transaksi()
     {
         return $this->hasMany(Transaksi::class);

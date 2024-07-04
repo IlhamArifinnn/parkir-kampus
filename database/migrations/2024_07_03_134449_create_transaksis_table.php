@@ -17,7 +17,7 @@ return new class extends Migration
             $table->time('mulai');
             $table->time('akhir');
             $table->string('keterangan', 100);
-            $table->double('biaya');
+            $table->double('biaya')->nullable();
             $table->foreignId('kendaraan_id')->constrained('kendaraans');
             $table->unsignedBigInteger('area_parkir_id');
             $table->foreign('area_parkir_id')->references('id')->on('area_parkirs');

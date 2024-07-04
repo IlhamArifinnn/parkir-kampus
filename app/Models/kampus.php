@@ -6,10 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Kampus extends Model
-{ protected $fillable = ['nama', 'alamat', 'latitude', 'longitude'];
+{ 
+    use HasFactory;
 
-    public function areaParkir()
+    protected $fillable = [
+        'nama',
+        'alamat',
+        'latitude',
+        'longitude',
+    ];
+
+    public function areaParkirs()
     {
         return $this->hasMany(AreaParkir::class);
     }
+    protected $table = 'kampus';
 }

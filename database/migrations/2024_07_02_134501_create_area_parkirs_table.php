@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('nama', 30);
             $table->integer('kapasitas');
             $table->string('keterangan', 45);
-            $table->foreignId('kampus')->constrained('kampus');
+            $table->foreignId('kampus_id')->constrained('kampus');
             $table->timestamps();
         });
     }

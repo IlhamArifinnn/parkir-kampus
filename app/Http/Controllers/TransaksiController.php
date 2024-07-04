@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use App\Models\Kendaraan;
+use App\Models\AreaParkir;
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -12,85 +16,97 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksis = Transaksi::latest()->get();
-
+        $transaksis = Transaksi::with(['kendaraan', 'areaParkir'])->get();
         return view('transaksis.index', compact('transaksis'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('transaksis.create');
+        $kendaraans = Kendaraan::all();
+        $areaParkirs = AreaParkir::all();
+        return view('transaksis.create', compact('kendaraans', 'areaParkirs'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'tanggal' => 'required|date',
-            'mulai' => 'required|date_format:Y-m-d H:i:s',
-            'akhir' => 'required|date_format:Y-m-d H:i:s',
-            'keterangan' => 'required|string|max:255',
-            'biaya' => 'required|numeric',
+            'mulai' => 'required|date_format:H:i',
+            'akhir' => 'required|date_format:H:i|after:mulai',
+            'keterangan' => 'required|max:100',
             'kendaraan_id' => 'required|exists:kendaraans,id',
-            'area_parkir' => 'required|exists:area_parkirs,id',
+            'area_parkir_id' => 'required|exists:area_parkirs,id',
         ]);
 
-        Transaksi::create($validatedData);
+        $kendaraan = Kendaraan::find($request->kendaraan_id);
+        $mulai = Carbon::createFromFormat('H:i', $request->mulai);
+        $akhir = Carbon::createFromFormat('H:i', $request->akhir);
+        $durasiJam = $mulai->diffInHours($akhir);
 
-        return redirect()->route('transaksis.index')->with('success', 'Transaksi created successfully.');
+        $tarif = ($kendaraan->jenis == 'mobil') ? 5000 : 2000;
+        $biaya = $durasiJam * $tarif;
 
+        Transaksi::create([
+            'tanggal' => $request->tanggal,
+            'mulai' => $request->mulai,
+            'akhir' => $request->akhir,
+            'keterangan' => $request->keterangan,
+            'biaya' => $biaya,
+            'kendaraan_id' => $request->kendaraan_id,
+            'area_parkir_id' => $request->area_parkir_id,
+        ]);
+
+        return redirect()->route('transaksis.index')->with('success', 'Transaksi berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Transaksi $transaksi)
     {
         return view('transaksis.show', compact('transaksi'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Transaksi $transaksi)
     {
-        return view('transaksis.edit', compact('transaksi'));
+        $kendaraans = Kendaraan::all();
+        $areaParkirs = AreaParkir::all();
+        return view('transaksis.edit', compact('transaksi', 'kendaraans', 'areaParkirs'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Transaksi $transaksi)
     {
-        $validatedData = $request->validate([
-            'tanggal' => 'sometimes|required|date',
-            'mulai' => 'sometimes|required|date_format:Y-m-d H:i:s',
-            'akhir' => 'sometimes|required|date_format:Y-m-d H:i:s',
-            'keterangan' => 'sometimes|required|string|max:255',
-            'biaya' => 'sometimes|required|numeric',
-            'kendaraan_id' => 'sometimes|required|exists:kendaraans,id',
-            'area_parkir' => 'sometimes|required|exists:area_parkirs,id',
+        $request->validate([
+            'tanggal' => 'required|date',
+            'mulai' => 'required|date_format:H:i',
+            'akhir' => 'required|date_format:H:i|after:mulai',
+            'keterangan' => 'required|max:100',
+            'kendaraan_id' => 'required|exists:kendaraans,id',
+            'area_parkir_id' => 'required|exists:area_parkirs,id',
         ]);
 
-        $transaksi->update($validatedData);
+        $kendaraan = Kendaraan::find($request->kendaraan_id);
+        $mulai = Carbon::createFromFormat('H:i', $request->mulai);
+        $akhir = Carbon::createFromFormat('H:i', $request->akhir);
+        $durasiJam = $mulai->diffInHours($akhir);
 
-        return redirect()->route('transaksis.index')->with('success', 'Transaksi updated successfully.');
+        $tarif = ($kendaraan->jenis == 'mobil') ? 5000 : 2000;
+        $biaya = $durasiJam * $tarif;
 
+        $transaksi->update([
+            'tanggal' => $request->tanggal,
+            'mulai' => $request->mulai,
+            'akhir' => $request->akhir,
+            'keterangan' => $request->keterangan,
+            'biaya' => $biaya,
+            'kendaraan_id' => $request->kendaraan_id,
+            'area_parkir_id' => $request->area_parkir_id,
+        ]);
+
+        return redirect()->route('transaksis.index')->with('success', 'Transaksi berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Transaksi $transaksi)
     {
         $transaksi->delete();
 
-        return redirect()->route('transaksis.index')->with('success', 'Transaksi deleted successfully.');
-
+        return redirect()->route('transaksis.index')->with('success', 'Transaksi berhasil dihapus.');
     }
 }

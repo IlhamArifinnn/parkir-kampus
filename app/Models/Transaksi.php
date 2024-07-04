@@ -7,7 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
-    protected $fillable = ['tanggal', 'mulai', 'akhir', 'keterangan', 'biaya', 'kendaraan_id', 'area_parkir_id'];
+    use HasFactory;
+
+    protected $fillable = [
+        'tanggal', 'mulai', 'akhir', 'keterangan', 'biaya', 'kendaraan_id', 'area_parkir_id'
+    ];
+
+    protected $casts = [
+        'tanggal' => 'date',
+        'mulai' => 'datetime',
+        'akhir' => 'datetime',
+        'biaya' => 'double',
+    ];
 
     public function kendaraan()
     {

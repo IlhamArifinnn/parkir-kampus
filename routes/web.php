@@ -46,13 +46,13 @@ Route::put('/kendaraans/{kendaraan}', [KendaraanController::class, 'update'])->n
 Route::delete('/kendaraans/{kendaraan}', [KendaraanController::class, 'destroy'])->name('kendaraans.destroy');
 
 
-Route::get('/area-parkirs', [AreaParkirController::class, 'index'])->name('area-parkirs.index');
-Route::get('/area-parkirs/create', [AreaParkirController::class, 'create'])->name('area-parkirs.create');
-Route::post('/area-parkirs', [AreaParkirController::class, 'store'])->name('area-parkirs.store');
-Route::get('/area-parkirs/{areaParkir}', [AreaParkirController::class, 'show'])->name('area-parkirs.show');
-Route::get('/area-parkirs/{areaParkir}/edit', [AreaParkirController::class, 'edit'])->name('area-parkirs.edit');
-Route::put('/area-parkirs/{areaParkir}', [AreaParkirController::class, 'update'])->name('area-parkirs.update');
-Route::delete('/area-parkirs/{areaParkir}', [AreaParkirController::class, 'destroy'])->name('area-parkirs.destroy');
+Route::get('/area_parkirs', [AreaParkirController::class, 'index'])->name('area_parkirs.index');
+Route::get('/area_parkirs/create', [AreaParkirController::class, 'create'])->name('area_parkirs.create');
+Route::post('/area_parkirs', [AreaParkirController::class, 'store'])->name('area_parkirs.store');
+Route::get('/area_parkirs/{areaParkir}', [AreaParkirController::class, 'show'])->name('area_parkirs.show');
+Route::get('/area_parkirs/{areaParkir}/edit', [AreaParkirController::class, 'edit'])->name('area_parkirs.edit');
+Route::put('/area_parkirs/{areaParkir}', [AreaParkirController::class, 'update'])->name('area_parkirs.update');
+Route::delete('/area_parkirs/{areaParkir}', [AreaParkirController::class, 'destroy'])->name('area_parkirs.destroy');
 
 
 

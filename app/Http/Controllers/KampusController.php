@@ -12,74 +12,54 @@ class KampusController extends Controller
      */
     public function index()
     {
-        $kampuses = Kampus::latest()->get();
-
-        // Render view with kampus list
-        return view('kampus.index', compact('kampuses'));
+        $kampus = Kampus::all();
+        return view('kampus.index', compact('kampus'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('kampus.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nama' => 'required|string|max:255',
-            'alamat' => 'required|string|max:255',
+        $request->validate([
+            'nama' => 'required|string|max:20',
+            'alamat' => 'required|string|max:45',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
         ]);
 
-        Kampus::create($validatedData);
-
+        Kampus::create($request->all());
         return redirect()->route('kampus.index')->with('success', 'Kampus created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(kampus $kampus)
+    public function show(Kampus $kampus)
     {
         return view('kampus.show', compact('kampus'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(kampus $kampus)
+    public function edit(Kampus $kampus)
     {
         return view('kampus.edit', compact('kampus'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, kampus $kampus)
+    public function update(Request $request, Kampus $kampus)
     {
-        $validatedData = $request->validate([
-            'nama' => 'sometimes|required|string|max:255',
-            'alamat' => 'sometimes|required|string|max:255',
+        $request->validate([
+            'nama' => 'required|string|max:20',
+            'alamat' => 'required|string|max:45',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
         ]);
 
-        $kampus->update($validatedData);
-
+        $kampus->update($request->all());
         return redirect()->route('kampus.index')->with('success', 'Kampus updated successfully.');
-
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(kampus $kampus)
+    public function destroy(Kampus $kampus)
     {
         $kampus->delete();
-
         return redirect()->route('kampus.index')->with('success', 'Kampus deleted successfully.');
     }
 }

@@ -1,145 +1,51 @@
 @extends('layout.template')
-@section('title', isset($kendaraan) ? 'Edit Kendaraan - Parkir Kampus' : 'Create New Kendaraan - Parkir Kampus')
+
+@section('title', isset($kampus) ? 'Edit Kampus - Parkir Kampus' : 'Create New Kampus - Parkir Kampus')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>{{ isset($kendaraan) ? 'Edit Kendaraan' : 'Create New Kendaraan' }}</h2>
-                <form
-                    action="{{ isset($kendaraan) ? route('kendaraans.update', $kendaraan->id) : route('kendaraans.store') }}"
-                    method="POST">
+                <h2>{{ isset($kampus) ? 'Edit Kampus' : 'Create New Kampus' }}</h2>
+                <form action="{{ isset($kampus) ? route('kampus.update', $kampus->id) : route('kampus.store') }}" method="POST">
                     @csrf
-                    @if (isset($kendaraan))
+                    @if (isset($kampus))
                         @method('PUT')
                     @endif
-                    <div class="form-group mb-3">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="merk">Merk</label>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control @error('merk') is-invalid @enderror"
-                                    id="merk" name="merk"
-                                    value="{{ old('merk', isset($kendaraan) ? $kendaraan->merk : '') }}" required>
-                                @error('merk')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="nama">Nama</label>
+                        <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama"
+                            value="{{ old('nama', isset($kampus) ? $kampus->nama : '') }}" required>
+                        @error('nama')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="form-group mb-3">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="pemilik">Pemilik</label>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control @error('pemilik') is-invalid @enderror"
-                                    id="pemilik" name="pemilik"
-                                    value="{{ old('pemilik', isset($kendaraan) ? $kendaraan->pemilik : '') }}" required>
-                                @error('pemilik')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="alamat">Alamat</label>
+                        <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat"
+                            value="{{ old('alamat', isset($kampus) ? $kampus->alamat : '') }}" required>
+                        @error('alamat')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="form-group mb-3">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="nopol">Nomor Polisi</label>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control @error('nopol') is-invalid @enderror"
-                                    id="nopol" name="nopol"
-                                    value="{{ old('nopol', isset($kendaraan) ? $kendaraan->nopol : '') }}" required>
-                                @error('nopol')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="latitude">Latitude</label>
+                        <input type="number" step="any" class="form-control @error('latitude') is-invalid @enderror" id="latitude" name="latitude"
+                            value="{{ old('latitude', isset($kampus) ? $kampus->latitude : '') }}" required>
+                        @error('latitude')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="form-group mb-3">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="thn_beli">Tahun Beli</label>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="number" class="form-control @error('thn_beli') is-invalid @enderror"
-                                    id="thn_beli" name="thn_beli"
-                                    value="{{ old('thn_beli', isset($kendaraan) ? $kendaraan->thn_beli : '') }}" required>
-                                @error('thn_beli')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="longitude">Longitude</label>
+                        <input type="number" step="any" class="form-control @error('longitude') is-invalid @enderror" id="longitude" name="longitude"
+                            value="{{ old('longitude', isset($kampus) ? $kampus->longitude : '') }}" required>
+                        @error('longitude')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="form-group mb-3">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="deskripsi">Deskripsi</label>
-                            </div>
-                            <div class="col-md-9">
-                                <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" required>{{ old('deskripsi', isset($kendaraan) ? $kendaraan->deskripsi : '') }}</textarea>
-                                @error('deskripsi')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group mb-3">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="jenis_kendaraan_id">Jenis Kendaraan</label>
-                            </div>
-                            <div class="col-md-9">
-                                <select class="form-control @error('jenis_kendaraan_id') is-invalid @enderror"
-                                    id="jenis_kendaraan_id" name="jenis_kendaraan_id" required>
-                                    <option value="">Select Jenis</option>
-                                    @foreach ($jenisList as $jenis)
-                                        <option value="{{ $jenis->id }}"
-                                            {{ isset($kendaraan) && $kendaraan->jenis_kendaraan_id == $jenis->id ? 'selected' : '' }}>
-                                            {{ $jenis->nama }}</option>
-                                    @endforeach
-                                </select>
-                                @error('jenis_kendaraan_id')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group mb-3">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="kapasitas_kursi">Kapasitas Kursi</label>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="number" class="form-control @error('kapasitas_kursi') is-invalid @enderror"
-                                    id="kapasitas_kursi" name="kapasitas_kursi"
-                                    value="{{ old('kapasitas_kursi', isset($kendaraan) ? $kendaraan->kapasitas_kursi : '') }}"
-                                    required>
-                                @error('kapasitas_kursi')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group mb-3">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="rating">Rating</label>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="number" class="form-control @error('rating') is-invalid @enderror"
-                                    id="rating" name="rating"
-                                    value="{{ old('rating', isset($kendaraan) ? $kendaraan->rating : '') }}" required>
-                                @error('rating')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary offset-2">Submit</button>
-                    <a href="{{ route('kendaraans.index') }}" class="btn btn-secondary">Back</a>
+                    <button type="submit" class="btn btn-primary">{{ isset($kampus) ? 'Update' : 'Create' }}</button>
+                    <a href="{{ route('kampus.index') }}" class="btn btn-secondary">Back</a>
                 </form>
             </div>
         </div>

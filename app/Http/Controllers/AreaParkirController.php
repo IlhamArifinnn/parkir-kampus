@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AreaParkir;
+use App\Models\Kampus;
 use Illuminate\Http\Request;
 
 class AreaParkirController extends Controller
@@ -12,78 +13,58 @@ class AreaParkirController extends Controller
      */
     public function index()
     {
-        $areas = AreaParkir::latest()->get();
-
-        //render view with products
-        return view('areas.index', compact('areas'));
-
+        $areaParkirs = AreaParkir::with('kampus')->get();
+        return view('area_parkirs.index', compact('areaParkirs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('areas.create');
+        $kampus = Kampus::all();
+        return view('area_parkirs.create', compact('kampus'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nama' => 'required|string|max:255',
+        $request->validate([
+            'nama' => 'required|string|max:30',
             'kapasitas' => 'required|integer',
-            'keterangan' => 'required|string',
+            'keterangan' => 'nullable|string|max:45',
             'kampus_id' => 'required|exists:kampus,id',
         ]);
 
-        AreaParkir::create($validatedData);
+        AreaParkir::create($request->all());
 
-        return redirect()->route('area-parkirs.index')->with('success', 'Area parkir created successfully.');
+        return redirect()->route('area_parkirs.index')->with('success', 'Area parkir created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(AreaParkir $areaParkir)
     {
-        return view('areas.show', compact('areaParkir'));
+        return view('area_parkirs.show', compact('areaParkir'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(AreaParkir $areaParkir)
     {
-        return view('areas.edit', compact('areaParkir'));
+        $kampus = Kampus::all();
+        return view('area_parkirs.edit', compact('areaParkir', 'kampus'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, AreaParkir $areaParkir)
     {
-        $validatedData = $request->validate([
-            'nama' => 'sometimes|required|string|max:255',
-            'kapasitas' => 'sometimes|required|integer',
-            'keterangan' => 'sometimes|required|string',
-            'kampus_id' => 'sometimes|required|exists:kampus,id',
+        $request->validate([
+            'nama' => 'required|string|max:30',
+            'kapasitas' => 'required|integer',
+            'keterangan' => 'nullable|string|max:45',
+            'kampus_id' => 'required|exists:kampus,id',
         ]);
 
-        $areaParkir->update($validatedData);
+        $areaParkir->update($request->all());
 
-        return redirect()->route('area-parkirs.index')->with('success', 'Area parkir updated successfully.');
+        return redirect()->route('area_parkirs.index')->with('success', 'Area parkir updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(AreaParkir $areaParkir)
     {
         $areaParkir->delete();
-
-        return redirect()->route('area-parkirs.index')->with('success', 'Area parkir deleted successfully.');
+        return redirect()->route('area_parkirs.index')->with('success', 'Area parkir deleted successfully.');
     }
 }
