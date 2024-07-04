@@ -63,3 +63,7 @@ Route::get('/transaksis/{transaksi}', [TransaksiController::class, 'show'])->nam
 Route::get('/transaksis/{transaksi}/edit', [TransaksiController::class, 'edit'])->name('transaksis.edit');
 Route::put('/transaksis/{transaksi}', [TransaksiController::class, 'update'])->name('transaksis.update');
 Route::delete('/transaksis/{transaksi}', [TransaksiController::class, 'destroy'])->name('transaksis.destroy');
+
+Route::get('/login', function () {
+    return view('login.index');
+});
