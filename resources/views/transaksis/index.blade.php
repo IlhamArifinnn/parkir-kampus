@@ -31,9 +31,9 @@
                             @foreach ($transaksis as $transaksi)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $transaksi->tanggal->format('d/m/Y') }}</td>
-                                    <td>{{ $transaksi->mulai->format('H:i') }}</td>
-                                    <td>{{ $transaksi->akhir->format('H:i') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($transaksi->tanggal)->format('d/m/Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($transaksi->mulai)->format('H:i') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($transaksi->keluar)->format('H:i') }}</td>
                                     <td>{{ $transaksi->kendaraan->merk }} - {{ $transaksi->kendaraan->nopol }}</td>
                                     <td>{{ $transaksi->areaParkir->nama }}</td>
                                     <td>Rp {{ number_format($transaksi->biaya, 0, ',', '.') }}</td>

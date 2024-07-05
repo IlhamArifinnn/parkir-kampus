@@ -32,36 +32,22 @@ class TransaksiController extends Controller
         $request->validate([
             'tanggal' => 'required|date',
             'mulai' => 'required|date_format:H:i',
-            'akhir' => 'required|date_format:H:i|after:mulai',
             'keterangan' => 'required|max:100',
             'kendaraan_id' => 'required|exists:kendaraans,id',
             'area_parkir_id' => 'required|exists:area_parkirs,id',
         ]);
 
-        $kendaraan = Kendaraan::find($request->kendaraan_id);
-        $mulai = Carbon::createFromFormat('H:i', $request->mulai);
-        $akhir = Carbon::createFromFormat('H:i', $request->akhir);
-        $durasiJam = $mulai->diffInHours($akhir);
-
-        $tarif = ($kendaraan->jenis == 'mobil') ? 5000 : 2000;
-        $biaya = $durasiJam * $tarif;
-
         Transaksi::create([
             'tanggal' => $request->tanggal,
             'mulai' => $request->mulai,
-            'akhir' => $request->akhir,
             'keterangan' => $request->keterangan,
-            'biaya' => $biaya,
             'kendaraan_id' => $request->kendaraan_id,
             'area_parkir_id' => $request->area_parkir_id,
+            'keluar' => null, // Awalnya keluar null
+            'biaya' => 0, // Awalnya biaya 0
         ]);
 
-        return redirect()->route('transaksis.index')->with('success', 'Transaksi berhasil ditambahkan.');
-    }
-
-    public function show(Transaksi $transaksi)
-    {
-        return view('transaksis.show', compact('transaksi'));
+        return redirect()->route('transaksis.index')->with('success', 'Waktu masuk berhasil ditambahkan.');
     }
 
     public function edit(Transaksi $transaksi)
@@ -76,24 +62,29 @@ class TransaksiController extends Controller
         $request->validate([
             'tanggal' => 'required|date',
             'mulai' => 'required|date_format:H:i',
-            'akhir' => 'required|date_format:H:i|after:mulai',
+            'keluar' => 'nullable|date_format:H:i',
             'keterangan' => 'required|max:100',
             'kendaraan_id' => 'required|exists:kendaraans,id',
             'area_parkir_id' => 'required|exists:area_parkirs,id',
         ]);
 
         $kendaraan = Kendaraan::find($request->kendaraan_id);
+
+        // Ambil waktu keluar dari request atau gunakan waktu saat ini jika tidak ada
+        $keluar = $request->keluar ?? Carbon::now()->format('H:i');
+
+        // Hitung biaya berdasarkan perbedaan waktu
         $mulai = Carbon::createFromFormat('H:i', $request->mulai);
-        $akhir = Carbon::createFromFormat('H:i', $request->akhir);
-        $durasiJam = $mulai->diffInHours($akhir);
+        $durasiMenit = $mulai->diffInMinutes(Carbon::createFromFormat('H:i', $keluar));
 
         $tarif = ($kendaraan->jenis == 'mobil') ? 5000 : 2000;
-        $biaya = $durasiJam * $tarif;
+        $biaya = ceil($durasiMenit / 60) * $tarif;
 
+        // Update transaksi
         $transaksi->update([
             'tanggal' => $request->tanggal,
             'mulai' => $request->mulai,
-            'akhir' => $request->akhir,
+            'keluar' => $keluar,
             'keterangan' => $request->keterangan,
             'biaya' => $biaya,
             'kendaraan_id' => $request->kendaraan_id,
@@ -101,6 +92,11 @@ class TransaksiController extends Controller
         ]);
 
         return redirect()->route('transaksis.index')->with('success', 'Transaksi berhasil diperbarui.');
+    }
+
+    public function show(Transaksi $transaksi)
+    {
+        return view('transaksis.show', compact('transaksi'));
     }
 
     public function destroy(Transaksi $transaksi)

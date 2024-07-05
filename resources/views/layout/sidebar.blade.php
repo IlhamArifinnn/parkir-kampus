@@ -17,21 +17,11 @@
              </div>
          </div>
          <div class="navbar-nav w-100">
-             <a href="index.html" class="nav-item nav-link active"><i
-                     class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-             <div class="nav-item dropdown">
-                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
-                         class="fa fa-laptop me-2"></i>Elements</a>
-                 <div class="dropdown-menu bg-transparent border-0">
-                     <a href="button.html" class="dropdown-item">Buttons</a>
-                     <a href="typography.html" class="dropdown-item">Typography</a>
-                     <a href="element.html" class="dropdown-item">Other Elements</a>
-                 </div>
-             </div>
-             <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
-             <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
-             <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
-             <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
+            <a href="{{ route('kampus.index') }}" class="nav-item nav-link {{ Request::is('kampus') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Kampus</a>
+            <a href="{{ route('jenis.index') }}" class="nav-item nav-link {{ Request::is('jenis') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Jenis</a>
+            <a href="{{ route('kendaraans.index') }}" class="nav-item nav-link {{ Request::is('kendaraans') ? 'active' : '' }}"><i class="fa fa-keyboard me-2"></i>Kendaraan</a>
+            <a href="{{ route('area_parkirs.index') }}" class="nav-item nav-link {{ Request::is('area_parkirs') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Area Parkir</a>
+            <a href="{{ route('transaksis.index') }}" class="nav-item nav-link {{ Request::is('transaksis') ? 'active' : '' }}"><i class="fa fa-chart-bar me-2"></i>Transaksi</a>
 
          </div>
      </nav>

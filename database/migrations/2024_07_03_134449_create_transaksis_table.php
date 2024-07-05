@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal');
             $table->time('mulai');
-            $table->time('akhir');
+            $table->time('keluar')->nullable(); // Tambahkan kolom keluar
             $table->string('keterangan', 100);
-            $table->double('biaya')->nullable();
-            $table->foreignId('kendaraan_id')->constrained('kendaraans');
-            $table->unsignedBigInteger('area_parkir_id');
-            $table->foreign('area_parkir_id')->references('id')->on('area_parkirs');
+            $table->integer('biaya')->nullable(); // Pastikan kolom biaya dapat bernilai null
+            $table->foreignId('kendaraan_id')->constrained();
+            $table->foreignId('area_parkir_id')->constrained();
             $table->timestamps();
         });
     }

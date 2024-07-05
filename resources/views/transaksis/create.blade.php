@@ -22,23 +22,9 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="akhir">Akhir:</label>
-            <input type="time" name="akhir" id="akhir" class="form-control @error('akhir') is-invalid @enderror" value="{{ old('akhir') }}" required>
-            @error('akhir')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="form-group">
             <label for="keterangan">Keterangan:</label>
             <input type="text" name="keterangan" id="keterangan" class="form-control @error('keterangan') is-invalid @enderror" value="{{ old('keterangan') }}" required maxlength="100">
             @error('keterangan')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="form-group">
-            <label for="biaya">Biaya:</label>
-            <input type="number" name="biaya" id="biaya" class="form-control @error('biaya') is-invalid @enderror" value="{{ old('biaya') }}" required step="0.01">
-            @error('biaya')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>

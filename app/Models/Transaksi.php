@@ -4,20 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Transaksi extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'tanggal', 'mulai', 'akhir', 'keterangan', 'biaya', 'kendaraan_id', 'area_parkir_id'
-    ];
-
-    protected $casts = [
-        'tanggal' => 'date',
-        'mulai' => 'datetime',
-        'akhir' => 'datetime',
-        'biaya' => 'double',
+        'tanggal',
+        'mulai',
+        'keluar',
+        'keterangan',
+        'biaya',
+        'kendaraan_id',
+        'area_parkir_id',
     ];
 
     public function kendaraan()
@@ -28,5 +28,20 @@ class Transaksi extends Model
     public function areaParkir()
     {
         return $this->belongsTo(AreaParkir::class);
+    }
+
+    public function getTanggalAttribute($value)
+    {
+        return $value ? Carbon::parse($value) : null;
+    }
+
+    public function getMulaiAttribute($value)
+    {
+        return $value ? Carbon::parse($value) : null;
+    }
+
+    public function getKeluarAttribute($value)
+    {
+        return $value ? Carbon::parse($value) : null;
     }
 }

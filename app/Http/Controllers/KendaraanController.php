@@ -8,75 +8,71 @@ use Illuminate\Http\Request;
 
 class KendaraanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $kendaraans = Kendaraan::with('jenisKendaraan')->get();
-        return view('kendaraans.index', compact('kendaraans'));
-    }
 
-    public function create()
-    {
-        $jenisKendaraans = Jenis::all();
-        return view('kendaraans.create', compact('jenisKendaraans'));
-    }
+public function index()
+{
+    $kendaraans = Kendaraan::with('jenisKendaraan')->get();
+    return view('kendaraans.index', compact('kendaraans'));
+}
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'merk' => 'required|max:30',
-            'pemilik' => 'required|max:40',
-            'nopol' => 'required|max:20',
-            'thn_beli' => 'required|integer',
-            'deskripsi' => 'required|max:200',
-            'jenis_kendaraan_id' => 'required|exists:jenis,id',
-            'kapasitas_kursi' => 'required|integer',
-            'rating' => 'required|integer|min:1|max:5',
-        ]);
+public function create()
+{
+    $jenisKendaraans = Jenis::all();
+    return view('kendaraans.create', compact('jenisKendaraans'));
+}
 
-        Kendaraan::create($validatedData);
+public function store(Request $request)
+{
+    $validatedData = $request->validate([
+        'merk' => 'required|max:30',
+        'pemilik' => 'required|max:40',
+        'nopol' => 'required|max:20',
+        'thn_beli' => 'required|integer',
+        'deskripsi' => 'required|max:200',
+        'jenis_kendaraan_id' => 'required|exists:jenis,id',
+        'kapasitas_kursi' => 'required|integer',
+        'rating' => 'required|integer|min:1|max:5',
+    ]);
 
-        return redirect()->route('kendaraans.index')->with('success', 'Kendaraan berhasil ditambahkan.');
-    }
+    Kendaraan::create($validatedData);
 
-    public function show(Kendaraan $kendaraan)
-    {
-        return view('kendaraan.show', compact('kendaraan'));
-    }
+    return redirect()->route('kendaraans.index')->with('success', 'Kendaraan berhasil ditambahkan.');
+}
 
-    public function edit(Kendaraan $kendaraan)
-    {
-        $jenisKendaraans = Jenis::all();
-        return view('kendaraans.edit', compact('kendaraan', 'jenisKendaraans'));
-    }
+public function show(Kendaraan $kendaraan)
+{
+    return view('kendaraans.show', compact('kendaraan'));
+}
 
-    public function update(Request $request, Kendaraan $kendaraan)
-    {
-        $request->validate([
-            'merk' => 'required|max:30',
-            'pemilik' => 'required|max:40',
-            'nopol' => 'required|max:20',
-            'thn_beli' => 'required|integer',
-            'deskripsi' => 'required|max:200',
-            'jenis_kendaraan_id' => 'required|exists:jenis,id',
-            'kapasitas_kursi' => 'required|integer',
-            'rating' => 'required|integer|min:1|max:5',
-        ]);
+public function edit(Kendaraan $kendaraan)
+{
+    $jenisKendaraans = Jenis::all();
+    return view('kendaraans.edit', compact('kendaraan', 'jenisKendaraans'));
+}
 
-        $kendaraan->update($validatedData);
+public function update(Request $request, Kendaraan $kendaraan)
+{
+    $validatedData = $request->validate([
+        'merk' => 'required|max:30',
+        'pemilik' => 'required|max:40',
+        'nopol' => 'required|max:20',
+        'thn_beli' => 'required|integer',
+        'deskripsi' => 'required|max:200',
+        'jenis_kendaraan_id' => 'required|exists:jenis,id',
+        'kapasitas_kursi' => 'required|integer',
+        'rating' => 'required|integer|min:1|max:5',
+    ]);
 
-        return redirect()->route('kendaraan.index')->with('success', 'Kendaraan updated successfully.');
+    $kendaraan->update($validatedData);
 
-        return redirect()->route('kendaraans.index')->with('success', 'Kendaraan berhasil diperbarui.');
-    }
+    return redirect()->route('kendaraans.index')->with('success', 'Kendaraan berhasil diperbarui.');
+}
 
-    public function destroy(Kendaraan $kendaraan)
-    {
-        $kendaraan->delete();
+public function destroy(Kendaraan $kendaraan)
+{
+    $kendaraan->delete();
 
-        return redirect()->route('kendaraan.index')->with('success', 'Kendaraan deleted successfully.');
+    return redirect()->route('kendaraans.index')->with('success', 'Kendaraan berhasil dihapus.');
+}
 
-    }
 }
