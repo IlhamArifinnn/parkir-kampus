@@ -12,16 +12,20 @@ class LoginController extends Controller
     {
         return view('login.index');
     }
-
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
         if (Auth::attempt($credentials)) {
-            // Authentication passed...
-            return redirect()->intended('/kendaraans'); // Redirect to intended page after login
+            return redirect()->intended('/kendaraans'); 
         }
-
         return back()->withErrors(['email' => 'Invalid credentials'])->withInput($request->only('email'));
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/'); // You can change this to any route you want to redirect to after logout
     }
 }
