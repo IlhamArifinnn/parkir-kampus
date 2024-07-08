@@ -19,13 +19,6 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="pemilik">Pemilik</label>
-                        <input type="text" class="form-control @error('pemilik') is-invalid @enderror" id="pemilik" name="pemilik" value="{{ old('pemilik', isset($kendaraan) ? $kendaraan->pemilik : '') }}" required>
-                        @error('pemilik')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
                         <label for="nopol">Nopol</label>
                         <input type="text" class="form-control @error('nopol') is-invalid @enderror" id="nopol" name="nopol" value="{{ old('nopol', isset($kendaraan) ? $kendaraan->nopol : '') }}" required>
                         @error('nopol')

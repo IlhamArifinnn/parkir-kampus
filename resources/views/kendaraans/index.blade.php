@@ -14,7 +14,7 @@
             @endif
             
             @if ($kendaraans->isEmpty())
-                <div class="alert alert-warning">Tidak ada data kendaraan.</div>
+                <div class="alert alert-warning">Anda belum memiliki kendaraan terdaftar.</div>
             @else
                 <div class="table-responsive">
                     <table class="table table-striped">
@@ -22,14 +22,16 @@
                             <tr>
                                 <th>#</th>
                                 <th>Merk</th>
-                                <th>Pemilik</th>
                                 <th>Nopol</th>
+                                <th>Pemilik Kendaraan</th>
                                 <th>Tahun Beli</th>
                                 <th>Deskripsi</th>
                                 <th>Jenis Kendaraan</th>
                                 <th>Kapasitas Kursi</th>
                                 <th>Rating</th>
+                                @if(auth()->user()->role == 'admin')
                                 <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -37,13 +39,14 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $kendaraan->merk }}</td>
-                                    <td>{{ $kendaraan->pemilik }}</td>
                                     <td>{{ $kendaraan->nopol }}</td>
+                                    <td>{{ $kendaraan->user->name }}</td>
                                     <td>{{ $kendaraan->thn_beli }}</td>
                                     <td>{{ Str::limit($kendaraan->deskripsi, 30) }}</td>
                                     <td>{{ $kendaraan->jenisKendaraan->nama }}</td>
                                     <td>{{ $kendaraan->kapasitas_kursi }}</td>
                                     <td>{{ $kendaraan->rating }}</td>
+                                    @if(auth()->user()->role == 'admin')
                                     <td>
                                         <a href="{{ route('kendaraans.show', $kendaraan->id) }}" class="btn btn-info btn-sm">View</a>
                                         <a href="{{ route('kendaraans.edit', $kendaraan->id) }}" class="btn btn-primary btn-sm">Edit</a>
@@ -53,6 +56,7 @@
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this kendaraan?')">Delete</button>
                                         </form>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

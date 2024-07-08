@@ -12,13 +12,13 @@ class Kendaraan extends Model
 
     protected $fillable = [
         'merk',
-        'pemilik',
         'nopol',
         'thn_beli',
         'deskripsi',
         'jenis_kendaraan_id',
         'kapasitas_kursi',
-        'rating'
+        'rating',
+        'user_id'    
     ];
 
     public function jenisKendaraan()
@@ -30,4 +30,10 @@ class Kendaraan extends Model
     {
         return $this->hasMany(Transaksi::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

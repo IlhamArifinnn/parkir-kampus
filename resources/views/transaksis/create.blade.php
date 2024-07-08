@@ -56,6 +56,15 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
+        @if(auth()->user()->role == 'admin')
+        <div class="form-group">
+            <label for="selesai">Jam Keluar:</label>
+            <input type="time" name="selesai" id="selesai" class="form-control @error('selesai') is-invalid @enderror" value="{{ old('selesai') }}">
+            @error('selesai')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        @endif
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="{{ route('transaksis.index') }}" class="btn btn-secondary">Kembali</a>
     </form>
