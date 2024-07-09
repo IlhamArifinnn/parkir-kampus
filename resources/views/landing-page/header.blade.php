@@ -17,6 +17,6 @@
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <a class="btn-getstarted" href="">Sign In Now</a>
+        <a class="btn-getstarted" href="/login">Sign In Now</a>
     </div>
 </header>

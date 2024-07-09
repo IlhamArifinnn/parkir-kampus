@@ -33,12 +33,14 @@
                                     <td>{{ $k->latitude }}</td>
                                     <td>{{ $k->longitude }}</td>
                                     <td>
-                                        <a href="{{ route('kampus.show', $k->id) }}" class="btn btn-info btn-sm">View</a>
-                                        <a href="{{ route('kampus.edit', $k->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                        <form action="{{ route('kampus.destroy', $k->id) }}" method="POST" style="display: inline-block;">
+                                        <a href="{{ route('kampus.show', $k->id) }}" class="btn btn-info btn-sm"><i class="bi bi-eye text-white"></i></a>
+                                        <a href="{{ route('kampus.edit', $k->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
+                                        <form action="{{ route('kampus.destroy', $k->id) }}" method="POST"
+                                            style="display: inline-block;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this kampus?')">Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Are you sure you want to delete this kampus?')"><i class="bi bi-trash3"></i></button>
                                         </form>
                                     </td>
                                 </tr>

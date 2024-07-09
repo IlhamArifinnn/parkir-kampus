@@ -67,7 +67,7 @@
 
                             <div class="col-lg-3 col-6">
                                 <div class="stats-item text-center w-100 h-100">
-                                    <span data-purecounter-start="0" data-purecounter-end="7"
+                                    <span data-purecounter-start="0" data-purecounter-end="8"
                                         data-purecounter-duration="0" class="purecounter">7</span>
                                     <p>Area Parkir</p>
                                 </div>
@@ -231,78 +231,66 @@
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="card">
                             <div class="card-img">
-                                <img src="{{ asset('assets/landing-page/img/service-1.jpg') }}" alt="Parkir Utama"
+                                <img src="{{ asset('assets/landing-page/img/b1-1.jpg') }}" alt="Parkir Utama"
                                     class="img-fluid" />
                             </div>
                             <h3>Parkir B1:101-103</h3>
-                            <p>
-                                Lokasi parkir utama yang dekat dengan gedung pusat dan fasilitas kampus.
-                            </p>
+
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="card">
                             <div class="card-img">
-                                <img src="{{ asset('assets/landing-page/img/service-2.jpg') }}" alt="Parkir Timur"
+                                <img src="{{ asset('assets/landing-page/img/b1-5.jpg') }}" alt="Parkir Timur"
                                     class="img-fluid" />
                             </div>
                             <h3><a href="#" class="stretched-link">Parkir B1:104-106</a></h3>
-                            <p>
-                                Lokasi parkir di bagian timur kampus, ideal untuk mahasiswa dan staf.
-                            </p>
+
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="card">
                             <div class="card-img">
-                                <img src="{{ asset('assets/landing-page/img/service-3.jpg') }}" alt="Parkir Barat"
+                                <img src="{{ asset('assets/landing-page/img/b2-2.jpg') }}" alt="Parkir Barat"
                                     class="img-fluid" />
                             </div>
                             <h3><a href="#" class="stretched-link">Parkir B2</a></h3>
-                            <p>
-                                Lokasi parkir dengan akses langsung ke fakultas teknik dan laboratorium.
-                            </p>
+
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                         <div class="card">
                             <div class="card-img">
-                                <img src="{{ asset('assets/landing-page/img/service-4.jpg') }}" alt="Parkir Selatan"
+                                <img src="{{ asset('assets/landing-page/img/b3-2.jpg') }}" alt="Parkir Selatan"
                                     class="img-fluid" />
                             </div>
                             <h3><a href="#" class="stretched-link">Parkir B3</a></h3>
-                            <p>
-                                Lokasi parkir yang strategis dekat dengan pusat kegiatan mahasiswa.
-                            </p>
+
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                         <div class="card">
                             <div class="card-img">
-                                <img src="{{ asset('assets/landing-page/img/service-5.jpg') }}" alt="Parkir Fakultas"
+                                <img src="{{ asset('assets/landing-page/img/a5.jpg') }}" alt="Parkir Fakultas"
                                     class="img-fluid" />
                             </div>
                             <h3>Parkir A-1</h3>
-                            <p>
-                                Lokasi parkir khusus untuk fakultas dengan akses yang mudah dan aman.
-                            </p>
+
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
                         <div class="card">
                             <div class="card-img">
-                                <img src="{{ asset('assets/landing-page/img/service-6.jpg') }}"
-                                    alt="Parkir Perpustakaan" class="img-fluid" />
+                                <img src="{{ asset('assets/landing-page/img/a6.jpg') }}" alt="Parkir Perpustakaan"
+                                    class="img-fluid" />
                             </div>
                             <h3><a href="#" class="stretched-link">Parkir A-2</a></h3>
-                            <p>
-                                Lokasi parkir yang nyaman dan dekat dengan perpustakaan utama kampus.
-                            </p>
+
                         </div>
                     </div>
                 </div>
@@ -324,7 +312,7 @@
                                 keamanan parkir di area kampus. Jangan lewatkan kesempatan
                                 untuk mendapatkan akses parkir yang lebih mudah dan aman.
                             </p>
-                            <a class="cta-btn" href="#">Daftar Sekarang</a>
+                            <a class="cta-btn" href="/login">Daftar Sekarang</a>
                         </div>
                     </div>
                 </div>
@@ -347,7 +335,7 @@
             <div class="container">
                 <div class="row gy-4 align-items-center services-item">
                     <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
-                        <img src="{{ asset('assets/landing-page/img/service-1.jpg') }}" class="img-fluid"
+                        <img src="{{ asset('assets/landing-page/img/gerbang.jpg') }}" class="img-fluid"
                             alt="Sistem Parkir Terintegrasi" />
                     </div>
                     <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
@@ -370,7 +358,7 @@
                 <div class="row gy-4 align-items-center services-item">
                     <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out"
                         data-aos-delay="200">
-                        <img src="{{ asset('assets/landing-page/img/service-2.jpg') }}" class="img-fluid"
+                        <img src="{{ asset('assets/landing-page/img/about.webp') }}" class="img-fluid"
                             alt="Reservasi Parkir Online" />
                     </div>
                     <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
@@ -387,7 +375,7 @@
 
                 <div class="row gy-4 align-items-center services-item">
                     <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="300">
-                        <img src="{{ asset('assets/landing-page/img/service-3.jpg') }}" class="img-fluid"
+                        <img src="{{ asset('assets/landing-page/img/cctv.jpg') }}" class="img-fluid"
                             alt="Keamanan yang Terjamin" />
                     </div>
                     <div class="col-md-7" data-aos="fade-up" data-aos-delay="300">
@@ -408,7 +396,7 @@
                 <div class="row gy-4 align-items-center services-item">
                     <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out"
                         data-aos-delay="400">
-                        <img src="{{ asset('assets/landing-page/img/service-4.jpg') }}" class="img-fluid"
+                        <img src="{{ asset('assets/landing-page/img/pos.jpg') }}" class="img-fluid"
                             alt="Layanan Pelanggan Prima" />
                     </div>
                     <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="400">

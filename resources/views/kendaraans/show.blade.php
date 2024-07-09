@@ -1,20 +1,31 @@
 @extends('layout.template')
-@section('title', 'Kendaraan Details - Parkir Kampus')
+@section('title', 'Lihat Kendaraan - Parkir Kampus')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Kendaraan Details</h2>
-                <p><strong>Merk:</strong> {{ $kendaraan->merk }}</p>
-                <p><strong>Pemilik:</strong> {{ $kendaraan->pemilik }}</p>
-                <p><strong>Nomor Polisi:</strong> {{ $kendaraan->nopol }}</p>
-                <p><strong>Tahun Beli:</strong> {{ $kendaraan->thn_beli }}</p>
-                <p><strong>Deskripsi:</strong> {{ $kendaraan->deskripsi }}</p>
-                <p><strong>Jenis Kendaraan:</strong> {{ $kendaraan->jenis->nama }}</p>
-                <p><strong>Kapasitas Kursi:</strong> {{ $kendaraan->kapasitas_kursi }}</p>
-                <p><strong>Rating:</strong> {{ $kendaraan->rating }}</p>
-                <a href="{{ route('kendaraans.index') }}" class="btn btn-secondary">Back</a>
+                <h2>Lihat Kendaraan</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $kendaraan->merk }}</h5>
+                        <p class="card-text"><strong>No. Polisi:</strong> {{ $kendaraan->nopol }}</p>
+                        <p class="card-text"><strong>Tahun Beli:</strong> {{ $kendaraan->thn_beli }}</p>
+                        <p class="card-text"><strong>Deskripsi:</strong> {{ $kendaraan->deskripsi }}</p>
+                        <p class="card-text"><strong>Jenis Kendaraan:</strong> {{ $kendaraan->jenisKendaraan->nama }}</p>
+                        <p class="card-text"><strong>Kapasitas Kursi:</strong> {{ $kendaraan->kapasitas_kursi }}</p>
+                        <p class="card-text"><strong>Rating:</strong> {{ $kendaraan->rating }}</p>
+                        <a href="{{ route('kendaraans.index') }}" class="btn btn-secondary">Kembali</a>
+                        <a href="{{ route('kendaraans.edit', $kendaraan->id) }}" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                        <form action="{{ route('kendaraans.destroy', $kendaraan->id) }}" method="POST"
+                            style="display: inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger"
+                                onclick="return confirm('Apakah Anda yakin ingin menghapus kendaraan ini?')"><i class="bi bi-trash3"></i></button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

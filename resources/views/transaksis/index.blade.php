@@ -1,15 +1,12 @@
 @extends('layout.template')
-
-@section('title', 'Transaksi List - Parkir Kampus')
+@section('title', 'Daftar Transaksi - Parkir Kampus')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Transaksi List</h2>
-                @if(auth()->user()->role == 'user')
-                    <a href="{{ route('transaksis.create') }}" class="btn btn-primary mb-3">Create New Transaksi</a>
-                @endif
+                <h2>Daftar Transaksi</h2>
+                <a href="{{ route('transaksis.create') }}" class="btn btn-primary mb-3">Tambah Transaksi Baru</a>
                 @if (session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
@@ -22,43 +19,39 @@
                                 <th>#</th>
                                 <th>Tanggal</th>
                                 <th>Mulai</th>
-                                <th>Akhir</th>
+                                <th>Keluar</th>
                                 <th>Kendaraan</th>
                                 <th>Area Parkir</th>
+                                <th>Keterangan</th>
                                 <th>Biaya</th>
-                                @if(auth()->user()->role == 'admin')
-                                    <th>Action</th>
-                                @endif
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($transaksis as $transaksi)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($transaksi->tanggal)->format('d/m/Y') }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($transaksi->mulai)->format('H:i') }}</td>
-                                    <td>
-                                        @if ($transaksi->keluar)
-                                            {{ \Carbon\Carbon::parse($transaksi->keluar)->format('H:i') }}
-                                        @else
-                                            <!-- Handle case where 'keluar' is empty -->
-                                            <!-- You can show a placeholder or leave it blank -->
-                                        @endif
-                                    </td>
-                                    <td>{{ $transaksi->kendaraan->merk }} - {{ $transaksi->kendaraan->nopol }}</td>
+                                    <td>{{ $transaksi->tanggal }}</td>
+                                    <td>{{ $transaksi->mulai }}</td>
+                                    <td>{{ $transaksi->keluar }}</td>
+                                    <td>{{ $transaksi->kendaraan->merk }} ({{ $transaksi->kendaraan->nopol }})</td>
                                     <td>{{ $transaksi->areaParkir->nama }}</td>
-                                    <td>Rp {{ number_format($transaksi->biaya, 0, ',', '.') }}</td>
-                                    @if(auth()->user()->role == 'admin')
-                                        <td>
-                                            <a href="{{ route('transaksis.show', $transaksi->id) }}" class="btn btn-info btn-sm">View</a>
-                                            <a href="{{ route('transaksis.edit', $transaksi->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                            <form action="{{ route('transaksis.destroy', $transaksi->id) }}" method="POST" style="display: inline-block;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this transaksi?')">Delete</button>
-                                            </form>
-                                        </td>
-                                    @endif
+                                    <td>{{ $transaksi->keterangan }}</td>
+                                    <td>{{ $transaksi->biaya }}</td>
+                                    <td>
+                                        <a href="{{ route('transaksis.show', $transaksi->id) }}"
+                                            class="btn btn-info btn-sm"><i class="bi bi-eye text-white"></i></a>
+                                        <a href="{{ route('transaksis.edit', $transaksi->id) }}"
+                                            class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
+                                        <form action="{{ route('transaksis.destroy', $transaksi->id) }}" method="POST"
+                                            style="display: inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus transaksi ini?')"><i
+                                                    class="bi bi-trash3"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

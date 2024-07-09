@@ -69,7 +69,7 @@
             <div class="container">
                 <div class="row gy-4 align-items-center services-item">
                     <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
-                        <img src="{{ asset('assets/landing-page/img/service-1.jpg') }}" class="img-fluid"
+                        <img src="{{ asset('assets/landing-page/img/gerbang.jpg') }}" class="img-fluid"
                             alt="Sistem Parkir Terintegrasi" />
                     </div>
                     <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
@@ -92,7 +92,7 @@
                 <div class="row gy-4 align-items-center services-item">
                     <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out"
                         data-aos-delay="200">
-                        <img src="{{ asset('assets/landing-page/img/service-2.jpg') }}" class="img-fluid"
+                        <img src="{{ asset('assets/landing-page/img/about.webp') }}" class="img-fluid"
                             alt="Reservasi Parkir Online" />
                     </div>
                     <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
@@ -109,7 +109,7 @@
 
                 <div class="row gy-4 align-items-center services-item">
                     <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="300">
-                        <img src="{{ asset('assets/landing-page/img/service-3.jpg') }}" class="img-fluid"
+                        <img src="{{ asset('assets/landing-page/img/cctv.jpg') }}" class="img-fluid"
                             alt="Keamanan yang Terjamin" />
                     </div>
                     <div class="col-md-7" data-aos="fade-up" data-aos-delay="300">
@@ -120,7 +120,8 @@
                         <ul>
                             <li><i class="bi bi-check"></i><span>Monitoring CCTV 24 jam.</span></li>
                             <li><i class="bi bi-check"></i><span>Sistem kontrol akses yang ketat.</span></li>
-                            <li><i class="bi bi-check"></i><span>Notifikasi dan alarm untuk keamanan ekstra.</span></li>
+                            <li><i class="bi bi-check"></i><span>Notifikasi dan alarm untuk keamanan ekstra.</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -129,7 +130,7 @@
                 <div class="row gy-4 align-items-center services-item">
                     <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out"
                         data-aos-delay="400">
-                        <img src="{{ asset('') }}assets/img/service-4.jpg" class="img-fluid"
+                        <img src="{{ asset('assets/landing-page/img/pos.jpg') }}" class="img-fluid"
                             alt="Layanan Pelanggan Prima" />
                     </div>
                     <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="400">

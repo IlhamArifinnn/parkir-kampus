@@ -26,7 +26,17 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('jenis', JenisController::class);
-    Route::resource('kampus', KampusController::class);
+    Route::delete('/jenis/{jenis}', [JenisController::class, 'destroy'])->name('jenis.destroy');
+
+
+    Route::get('/kampus', [KampusController::class, 'index'])->name('kampus.index');
+    Route::get('/kampus/create', [KampusController::class, 'create'])->name('kampus.create');
+    Route::post('/kampus', [KampusController::class, 'store'])->name('kampus.store');
+    Route::get('/kampus/{kampus}', [KampusController::class, 'show'])->name('kampus.show');
+    Route::get('/kampus/{kampus}/edit', [KampusController::class, 'edit'])->name('kampus.edit');
+    Route::put('/kampus/{kampus}', [KampusController::class, 'update'])->name('kampus.update');
+    Route::delete('/kampus/{kampus}', [KampusController::class, 'destroy'])->name('kampus.destroy');
+
     Route::resource('area_parkirs', AreaParkirController::class);
 });
 

@@ -40,7 +40,7 @@
 
         <!-- Page Title -->
         <div class="page-title dark-background" data-aos="fade"
-            style="background-image: url(assets/img/gedung-a1.png);">
+            style="background-image: url(assets/landing-page/img/gedung-a1.png);">
             <div class="container position-relative">
                 <h1>About</h1>
                 <p> Kami menyediakan informasi lengkap tentang area parkir di kampus.

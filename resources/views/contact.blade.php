@@ -40,7 +40,7 @@
 
         <!-- Page Title -->
         <div class="page-title dark-background" data-aos="fade"
-            style="background-image: url(assets/img/page-title-bg.jpg);">
+            style="background-image: url(assets/landing-page/img/gedung-a1.png);">
             <div class="container position-relative">
                 <h1>Contact</h1>
                 <p>Silakan hubungi tim kami, kami akan membantu Anda menyelesaikan masalah tersebut secepat mungkin
@@ -60,13 +60,13 @@
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="mb-4 d-flex justify-content-between" data-aos="fade-up" data-aos-delay="200">
-                    <iframe style="border:0; width: 49%; height: 270px;border-radius: 6px"
+                    <iframe style="border:0; width: 49%; height: 300px;border-radius: 6px"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15860.966276987818!2d106.82642825541986!3d-6.36277389999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ed6178a2b32f%3A0x20d7938791acfd4a!2sSTT%20Terpadu%20Nurul%20Fikri%20(Kampus%20A%20-%20Sekretariat)!5e0!3m2!1sid!2sid!4v1720069469490!5m2!1sid!2sid"
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
-                    <iframe style="border:0; width: 49%; height: 270px;border-radius: 6px;"
+                    <iframe style="border:0; width: 49%; height: 300px;border-radius: 6px;"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15861.270082892343!2d106.81459915541993!3d-6.3529244999999985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ec6b07b68ea5%3A0x17da46bdf9308386!2sSTT%20Terpadu%20Nurul%20Fikri%20-%20Kampus%20B!5e0!3m2!1sid!2sid!4v1720069131329!5m2!1sid!2sid"
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
